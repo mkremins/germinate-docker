@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Germinate</title>
+  <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script data-main="./loader/main.js" src="./lib/require.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="columns">
+      <div class="intent" id="intentNode">
+        <h2>Design intent</h2>
+        <div class="buttonlinks">
+          <span id="viewCodeIntent">View code</span>
+        </div>
+        <section class="code">
+          <h3>Code</h3>
+          <textarea readonly id="codeForCurrentIntent"></textarea>
+        </section>
+        <section class="game">
+          <h3>Game</h3>
+          <div id="intentGameDetails">
+            <p>
+              Allow up to
+              <input id="maxEntitiesInput" type="number" value="2" min="0">
+              entities
+            </p>
+            <p>
+              Allow up to
+              <input id="maxResourcesInput" type="number" value="2" min="0">
+              resources
+            </p>
+            <p>
+              Allow up to
+              <input id="maxTriggersInput" type="number" value="6" min="0">
+              triggers
+            </p>
+          </div>
+        </section>
+        <section class="entities">
+          <h3>Entities</h3>
+          <div id="intentEntitiesList" class="things-list">
+            <div id="newEntityButton" class="thing entity new-button"
+                 title="Add new entity">+</div>
+          </div>
+        </section>
+        <section class="resources">
+          <h3>Resources</h3>
+          <div id="intentResourcesList" class="things-list">
+            <div id="newResourceButton" class="thing resource new-button"
+                 title="Add new resource">+</div>
+          </div>
+        </section>
+        <section class="relationships">
+          <h3>Relationships</h3>
+          <div id="intentRelationshipsList">
+            <div id="newRelationshipButton" class="relationship new-button"
+                 title="Add new relationship">+</div>
+          </div>
+        </section>
+        <section class="triggers">
+          <h3>Triggers</h3>
+          <div id="intentTriggersList">
+            <div id="newTriggerButton" class="trigger new-button"
+                 title="Add new trigger">+</div>
+          </div>
+        </section>
+        <div class="generate-games" id="generateGames">Generate games »</div>
+      </div>
+      <div class="game-navigator-empty-state" id="gameNavigatorEmptyState">
+        <div class="empty-state-message">
+          Hi there! There aren't any games here yet because you haven't generated any.<br><br>
+          Modify the design intent on the left to tell me what kind of games you want to generate,
+          then hit the "Generate Games" button at the bottom!<br><br>
+          Once you do that, I'm sure some games will appear.
+        </div>
+      </div>
+      <div class="game-navigator-loading-state" id="gameNavigatorLoadingState">
+        <div class="empty-state-message">
+          Generating some games...
+        </div>
+      </div>
+      <div class="game-navigator-error-state" id="gameNavigatorErrorState">
+        <div class="error-state-message">
+          Couldn't generate any games for the current intent!<br><br>
+          Try changing the intent to eliminate contradictory requirements.
+        </div>
+      </div>
+      <div class="game-navigator" id="gameNavigator">
+        <div class="game-navigator-topbar">
+          <input class="gametitle" type="text" value="A Game about Depression">
+          <button class="back" id="previousGame">« Previous game</button>
+          <div class="gamecounter" id="gameCounter">1 / 6</div>
+          <button class="continue" id="nextGame">Next game »</button>
+        </div>
+        <div class="thisgamecontainer">
+          <div class="thisgame">
+            <h2>Play</h2>
+            <div id="gameContainer"></div>
+            <div><button id="restart">Restart game</button></div>
+          </div>
+          <div class="thisgamerules" id="gameRulesNode">
+            <h2>Generated game rules</h2>
+            <div class="buttonlinks">
+              <span id="viewCodeGameRules">View code</span>
+            </div>
+            <section class="code">
+              <h3>Code</h3>
+              <textarea id="gameRulesCodeNode" readonly></textarea>
+            </section>
+            <section class="entities">
+              <h3>Entities</h3>
+              <div id="generatedEntitiesList" class="things-list"></div>
+            </section>
+            <section class="resources">
+              <h3>Resources</h3>
+              <div id="generatedResourcesList" class="things-list"></div>
+            </section>
+            <section class="relationships">
+              <h3>Relationships</h3>
+              <div id="generatedRelationshipsList"></div>
+            </section>
+            <section class="triggers">
+              <h3>Triggers</h3>
+              <div id="generatedTriggersList"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="intent-navigator"></div>
+  </main>
+  <script src="client/main.js"></script>
+  <script src="client/generate_intent.js"></script>
+  <script src="client/parse_game_asp.js"></script>
+</body>
+</html>
