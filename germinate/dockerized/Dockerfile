@@ -9,6 +9,6 @@ COPY Germinate /Germinate
 
 RUN cd /Gemini/server; npm install; \
     chmod +x /run-server.sh
-EXPOSE 4040
+EXPOSE 9000
 
 ENTRYPOINT ["/bin/sh", "/run-server.sh"]
